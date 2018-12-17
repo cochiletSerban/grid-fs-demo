@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev" : "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/cochiletSerban/grid-fs-demo/issues"
   },
-  "homepage": "https://github.com/cochiletSerban/grid-fs-demo#readme"
+  "homepage": "https://github.com/cochiletSerban/grid-fs-demo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.0",
+    "multer": "^1.4.1",
+    "multer-gridfs-storage": "^3.2.3",
+    "nodemon": "^1.18.9"
+  }
 }
