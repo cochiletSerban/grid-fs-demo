@@ -60,10 +60,40 @@ app.get('/', (req, res) =>{
 
 // @route POST /upload
 // @desc uploads to database
-
 app.post('/upload', upload.single('file'), (req, res) => {
-    res.json({file:req.file});
+    //res.json({file:req.file});
+    res.redirect('/');
 })
+
+//  @route GET /files
+//  @desc display all the files in json
+app.get('/files',(req, res) => {
+    gfs.files.find().toArray((err, files) => {
+        //  check if files exist
+        if (!files || files.length === 0) {
+            return res.status(404).json({
+                err:'no files exist'
+            });
+        }
+
+
+        return res.json(files);
+    });
+});
+
+
+//  @route GET /files/:filename
+//  @desc display all the info of a file
+app.get('/files/:filename',(req, res) => {
+    gfs.files.findOne({filename:req.params.filename}, (err, file) =>{
+        if (!file || file.length === 0) {
+            return res.status(404).json({
+                err:'no file exist'
+            });
+        }
+        return res.json(file);
+    })
+});
 
 const port = 5000;
 
